@@ -19,3 +19,12 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+----
+
+This notice covers only the files written for this repository. The directory
+`imc-prosperity-4-backtester-master/` is third-party code, vendored so the
+traders here can be backtested. It carries its own MIT license and copyright,
+Copyright (c) 2024 Jasper van Merle, in
+`imc-prosperity-4-backtester-master/LICENSE`, which is the license that applies
+to everything under that directory.
