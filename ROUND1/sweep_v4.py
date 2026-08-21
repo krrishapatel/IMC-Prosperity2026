@@ -1,11 +1,18 @@
 import itertools
+import os
 import re
+import shutil
 import subprocess
 from pathlib import Path
 
-BASE = Path("/Users/krrishapatel/Downloads/IMC Prosperity/ROUND1/trader_v4.py")
-TMP = Path("/Users/krrishapatel/Downloads/IMC Prosperity/ROUND1/trader_v4_tmp.py")
-BT = "/Users/krrishapatel/Downloads/IMC Prosperity/.venv/bin/prosperity4btest"
+HERE = Path(__file__).resolve().parent
+
+BASE = HERE / "trader_v4.py"
+TMP = HERE / "trader_v4_tmp.py"
+
+# The backtester the vendored copy installs as. Set PROSPERITY4BTEST to point at
+# a specific one, otherwise it is looked up on PATH.
+BT = os.environ.get("PROSPERITY4BTEST") or shutil.which("prosperity4btest")
 
 
 def set_const(src: str, name: str, value: str) -> str:
@@ -23,6 +30,13 @@ def backtest(path: Path) -> int:
 
 
 def main() -> None:
+    if BT is None:
+        raise SystemExit(
+            "prosperity4btest not found. Install the vendored backtester "
+            "(pip install -e imc-prosperity-4-backtester-master) or set "
+            "PROSPERITY4BTEST to its path."
+        )
+
     base = BASE.read_text()
     best = None
     best_cfg = None

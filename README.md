@@ -11,6 +11,25 @@ This repository contains my IMC Prosperity challenge work.
 
 The main submission files are the `trader.py` and `trader_v*.py` files in each round folder.
 
+## Tests
+
+[![CI](https://github.com/krrishapatel/IMC-Prosperity2026/actions/workflows/ci.yml/badge.svg)](https://github.com/krrishapatel/IMC-Prosperity2026/actions/workflows/ci.yml)
+
+```bash
+pip install -r requirements.txt
+python -m pytest
+```
+
+Every `trader*.py` in every round is imported and checked against the
+competition's contract: a class named `Trader` with `run(self, state)`. That is
+all the upload validates, and a file with a syntax error or a renamed method
+looked exactly like a working one until submission.
+
+The traders do `from datamodel import ...`, which comes from the vendored
+backtester rather than from PyPI, so `requirements.txt` declares the
+`jsonpickle` that `datamodel` needs and the root `conftest.py` puts the vendored
+package directory on the path.
+
 ## Third-party code
 
 `imc-prosperity-4-backtester-master/` is a copy of the IMC Prosperity 4

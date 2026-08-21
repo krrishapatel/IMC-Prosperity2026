@@ -1,0 +1,8 @@
+# The traders do `from datamodel import ...`, and datamodel imports jsonpickle.
+# Nothing in this repo declared that, so a fresh clone could not even import a
+# trader. datamodel itself lives in the vendored backtester, so put
+# imc-prosperity-4-backtester-master/prosperity4bt on PYTHONPATH.
+jsonpickle>=4.0.2
+
+# To actually run a backtest you need the backtester's own dependencies too:
+#   pip install -e imc-prosperity-4-backtester-master
